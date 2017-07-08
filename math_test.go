@@ -1,8 +1,9 @@
 package utils
 
 import (
-	. "gopkg.in/go-playground/assert.v1"
 	"testing"
+
+	. "gopkg.in/go-playground/assert.v1"
 )
 
 func Test_Math(t *testing.T) {

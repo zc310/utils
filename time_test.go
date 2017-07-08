@@ -1,9 +1,10 @@
 package utils
 
 import (
-	. "gopkg.in/go-playground/assert.v1"
 	"testing"
 	"time"
+
+	. "gopkg.in/go-playground/assert.v1"
 )
 
 func Test_Time(t *testing.T) {
