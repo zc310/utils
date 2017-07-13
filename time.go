@@ -14,9 +14,9 @@ func TimetampToTime(v string) (time.Time, error) {
 	switch len(v) {
 	//java.lang.System.currentTimeMillis()
 	case 13:
-		return time.Unix(0, t*int64(time.Millisecond)), nil
+		return time.Unix(0, t*int64(time.Millisecond)).UTC(), nil
 	case 19:
-		return time.Unix(0, t), nil
+		return time.Unix(0, t).UTC(), nil
 	}
-	return time.Unix(t, 0), nil
+	return time.Unix(t, 0).UTC(), nil
 }
