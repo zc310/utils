@@ -3,18 +3,18 @@ package utils
 import (
 	"testing"
 
-	. "gopkg.in/go-playground/assert.v1"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestExtractFileName(t *testing.T) {
-	Equal(t, ExtractFileName("a/b.txt"), "b.txt")
+	assert.Equal(t, ExtractFileName("a/b.txt"), "b.txt")
 }
 
 func TestChangeFileExt(t *testing.T) {
-	Equal(t, ChangeFileExt("a/b.txt", ".ini"), "a/b.ini")
+	assert.Equal(t, ChangeFileExt("a/b.txt", ".ini"), "a/b.ini")
 }
 func TestIsDirectory(t *testing.T) {
 	ok, err := IsDirectory("/tmp")
-	Equal(t, err, nil)
-	Equal(t, ok, true)
+	assert.Equal(t, err, nil)
+	assert.Equal(t, ok, true)
 }
