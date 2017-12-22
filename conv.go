@@ -3,7 +3,9 @@ package utils
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
+
 // GetString convert interface to string.
 func GetString(v interface{}) string {
 	switch result := v.(type) {
@@ -29,4 +31,21 @@ func GetBool(v interface{}) bool {
 		}
 	}
 	return false
+}
+
+// GetInt convert interface to int.
+func GetInt(v interface{}) int {
+	switch result := v.(type) {
+	case string:
+		return StrToInt(strings.TrimSpace(result))
+	case int:
+		return result
+	case int64:
+		return int(result)
+	default:
+		if v != nil {
+			return StrToInt(fmt.Sprint(result))
+		}
+	}
+	return 0
 }
