@@ -125,18 +125,19 @@ func GetResponseAge(ctx *fasthttp.RequestCtx, def time.Duration) (age time.Durat
 	if _, ok := respCacheControl[headers.NoCache]; ok {
 		return def, false
 	}
-
-	date, err := ResponseDate(ctx)
-	if err != nil {
-		return def, true
-	}
+	var err error
 	if maxAge, ok := respCacheControl[headers.MaxAge]; ok {
 		age, err = time.ParseDuration(maxAge + "s")
 		if err != nil {
 			return def, true
 		}
+		cache = true
 		return
 	} else {
+		date, err := ResponseDate(ctx)
+		if err != nil {
+			return def, true
+		}
 		expiresHeader := string(ctx.Response.Header.Peek(headers.Expires))
 		if expiresHeader != "" {
 			expires, err := time.Parse(time.RFC1123, expiresHeader)
