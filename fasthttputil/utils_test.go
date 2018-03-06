@@ -16,7 +16,7 @@ func TestGetParameters(t *testing.T) {
 	if err := ctx.Request.Read(br); err != nil {
 		t.Fatalf("cannot read request: %s", err)
 	}
-	assert.Equal(t, "a", GetArgs(&ctx, "a"))
+	assert.Equal(t, []byte("a"), GetArgs(&ctx, "a"))
 }
 
 func TestOk(t *testing.T) {
