@@ -21,3 +21,12 @@ func DynArrayIntToCommaText(a []int) string {
 	}
 	return strings.Join(s, ",")
 }
+
+type WideString string
+
+func (p WideString) MarshalJSON() ([]byte, error) {
+	return []byte(strconv.QuoteToASCII(string(p))), nil
+}
+func (p WideString) MarshalText() ([]byte, error) {
+	return []byte(strconv.QuoteToASCII(string(p))), nil
+}
