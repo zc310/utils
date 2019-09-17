@@ -20,8 +20,7 @@ func Base64Enc(a []byte) string {
 	return base64.StdEncoding.EncodeToString(a)
 }
 func Base64Dec(a string) ([]byte, error) {
-	b, err := base64.StdEncoding.DecodeString(a)
-	return b, err
+	return base64.StdEncoding.DecodeString(a)
 }
 
 func HexEnc(a []byte) string {
