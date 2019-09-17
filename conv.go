@@ -11,6 +11,10 @@ func GetString(v interface{}) string {
 	switch result := v.(type) {
 	case string:
 		return result
+	case []byte:
+		return string(v.([]byte))
+	case []string:
+		return strings.Join([]string(v.([]string)), "\n")
 	default:
 		if v != nil {
 			return fmt.Sprint(result)
