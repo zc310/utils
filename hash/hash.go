@@ -10,6 +10,7 @@ import (
 	"hash/adler32"
 	"hash/crc32"
 
+	"github.com/vmihailenco/msgpack"
 	"golang.org/x/crypto/md4"
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
@@ -59,6 +60,13 @@ func Md5Object(v interface{}) (string, error) {
 		return "", err
 	}
 	return MD5(b), nil
+}
+func Sha1Object(v interface{}) (string, error) {
+	b, err := msgpack.Marshal(v)
+	if err != nil {
+		return "", err
+	}
+	return SHA1(b), nil
 }
 
 // SHA1 sha1
