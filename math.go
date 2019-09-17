@@ -21,6 +21,13 @@ func StrToFloat32(s string) float32 {
 	}
 	return float32(f)
 }
+func StrToFloat(s string) float64 {
+	f, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return 0
+	}
+	return f
+}
 
 //StrToFloat32Def  Convert a string into an float32 value with default
 func StrToFloat32Def(s string, def float32) float32 {
@@ -47,4 +54,31 @@ func StrToIntDef(s string, def int) int {
 		return def
 	}
 	return i
+}
+func MinInt64(x, y int64) int64 {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+func MaxInt64(x, y int64) int64 {
+	if x > y {
+		return x
+	}
+	return y
+}
+
+func MinInt(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+
+func MaxInt(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
 }
