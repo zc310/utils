@@ -17,3 +17,10 @@ func TestWideString_MarshalJSON(t *testing.T) {
 	assert.Equal(t, nil, err)
 	assert.Equal(t, string(b), `{"a":"\u6c49\u5b57"}`)
 }
+func TestCommaTextToDynInt(t *testing.T) {
+	a := CommaTextToDynInt("1,2,3,,4,5,6,7")
+	assert.Equal(t, len(a), 7)
+	assert.Equal(t, a[6], 7)
+
+	assert.Equal(t,DynIntToCommaText(a),"1,2,3,4,5,6,7")
+}
