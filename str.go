@@ -35,8 +35,6 @@ func CommaTextToDynInt(a string) (b []int) {
 	return
 }
 
-
-
 type WideString string
 
 func (p WideString) MarshalJSON() ([]byte, error) {

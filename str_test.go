@@ -22,5 +22,5 @@ func TestCommaTextToDynInt(t *testing.T) {
 	assert.Equal(t, len(a), 7)
 	assert.Equal(t, a[6], 7)
 
-	assert.Equal(t,DynIntToCommaText(a),"1,2,3,4,5,6,7")
+	assert.Equal(t, DynIntToCommaText(a), "1,2,3,4,5,6,7")
 }

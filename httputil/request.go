@@ -75,8 +75,8 @@ func GetJs(url string) (string, error) {
 	if resp.StatusCode != http.StatusOK {
 		return "", fmt.Errorf("error %d %s", resp.StatusCode, http.StatusText(resp.StatusCode))
 	}
-	if strings.HasPrefix(resp.Header.Get("Content-Type"), "application/javascript") {
-		return "", errors.New("error Content-Type")
+	if !strings.HasPrefix(resp.Header.Get("Content-Type"), "application/javascript") {
+		return "", errors.New("error Content-Type:" + resp.Header.Get("Content-Type"))
 	}
 	b, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
